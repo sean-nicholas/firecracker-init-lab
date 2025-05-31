@@ -58,23 +58,17 @@ In another, instruct it to boot the rootsfs and Kernel:
 make boot
 ```
 
-Play around in the first terminal and explore the system:
+Run in the guest
 
 ```bash
-free -m
-cat /proc/cpuinfo
-ip addr
-ip route
-
-ping -c1 1.1.1.1
-
 haveged -w 1024
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
-ping -c1 google.com
+/root/.deno/bin/deno run --allow-net --allow-write --allow-read --allow-run /root/hello.ts
+```
 
-apk add --no-cache curl
-
-curl -i https://inlets.dev
+Run in host:
+```bash
+curl -X POST --data-binary @hi.ts http://172.16.0.2:4242
 ```
 
 ## Running on a Raspberry Pi
