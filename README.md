@@ -68,6 +68,7 @@ ip route
 
 ping -c1 1.1.1.1
 
+haveged -w 1024
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
 ping -c1 google.com
 
